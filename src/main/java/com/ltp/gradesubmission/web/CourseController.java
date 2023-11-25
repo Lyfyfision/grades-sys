@@ -30,6 +30,7 @@ public class CourseController {
     CourseService courseService;
 
     @GetMapping("/{id}")
+    @Operation(summary = "Get a existing course by course-ID")
     public ResponseEntity<Course> getCourse(@PathVariable Long id) {
         return new ResponseEntity<>(courseService.getCourse(id), HttpStatus.OK);
     }
@@ -41,18 +42,20 @@ public class CourseController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete existing course by course-ID")
     public ResponseEntity<HttpStatus> deleteCourse(@PathVariable Long id) {
         courseService.deleteCourse(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/all")
+    @Operation(summary = "Get all existing courses")
     public ResponseEntity<List<Course>> getCourses() {
         return new ResponseEntity<>(courseService.getCourses(), HttpStatus.OK);
     }
 
     @PutMapping("/{courseId}/student/{studentId}")
-    @Operation(summary = "Add a existed student to existed course")
+    @Operation(summary = "Add a existing student to existing course")
     public ResponseEntity<Course> enrollStudentToCourse(@PathVariable Long courseId, @PathVariable Long studentId) {
         return new ResponseEntity<>(courseService.addStudentToCourse(studentId, courseId), HttpStatus.OK);
     }

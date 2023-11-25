@@ -70,7 +70,13 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.12</version>
+			<version>1.6.15</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-webmvc-core</artifactId>
+			<version>1.6.15</version>
 		</dependency>
 	</dependencies>
 
@@ -93,7 +99,6 @@
 					</execution>
 				</executions>
 				<configuration>
-					<apiDocsUrl>http://localhost:8080/api-docs</apiDocsUrl>
 					<outputFileName>openapi.json</outputFileName>
 					<outputDir>${project.build.directory}</outputDir>
 				</configuration>

@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,31 +28,35 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/student")
 public class StudentController {
 
-    @Autowired
     StudentService studentService;
     
     @GetMapping("/{id}")
+    @Operation(summary = "Get a specific student by ID")
     public ResponseEntity<Student> getStudent(@PathVariable Long id) {
         return new ResponseEntity<>(studentService.getStudent(id), HttpStatus.OK);
     }
 
     @PostMapping
+    @Operation(summary = "Save a new student")
     public ResponseEntity<Student> saveStudent(@Valid @RequestBody Student student) {
         return new ResponseEntity<>(studentService.saveStudent(student), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete an existing student")
     public ResponseEntity<HttpStatus> deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/all")
+    @Operation(summary = "Get all students in system")
     public ResponseEntity<List<Student>> getStudents() {
         return new ResponseEntity<>(studentService.getStudents(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}/courses")
+    @Operation(summary = "Get all courses of a specific student")
     public ResponseEntity<Set<Course>> getEnrolledCourses(@PathVariable Long id) {
         return new ResponseEntity<>(studentService.getEnrolledCourses(id), HttpStatus.OK);
     }
