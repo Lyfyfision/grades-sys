@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //TODO: Add all methods
 
 @WebMvcTest(StudentController.class)
-public class StudentControllerTest {
+public class StudentControllerWebLayerTest {
 	@Autowired
 	private MockMvc mockMvc;
 
